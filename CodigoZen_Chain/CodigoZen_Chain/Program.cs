@@ -1,6 +1,7 @@
 using CodigoZen_Chain.Handlers;
 using CodigoZen_Chain.Handlers.Internacional;
 using CodigoZen_Chain.Handlers.Nacional;
+using CodigoZen_Chain.Services;
 
 namespace CodigoZen_Chain;
 
@@ -20,6 +21,7 @@ public class Program
         builder.Services.AddTransient<NacionalValidationHandler>();
         builder.Services.AddTransient<NacionalDiscountHandler>();
         builder.Services.AddTransient<NotificationHandler>();
+        builder.Services.AddTransient<IRepository, Repository>();
         
         builder.Services.AddTransient<IOrderHandler>(sp =>
         {

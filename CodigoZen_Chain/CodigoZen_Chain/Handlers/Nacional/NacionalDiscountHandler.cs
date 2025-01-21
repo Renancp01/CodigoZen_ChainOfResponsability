@@ -1,7 +1,16 @@
-﻿namespace CodigoZen_Chain.Handlers.Nacional;
+﻿using CodigoZen_Chain.Services;
+
+namespace CodigoZen_Chain.Handlers.Nacional;
 
 public class NacionalDiscountHandler : OrderHandlerBase
 {
+    private readonly IRepository _repository;
+
+    public NacionalDiscountHandler(IRepository repository)
+    {
+        _repository = repository;
+    }
+
     public override Order Process(Order order)
     {
         if (order.Fornecedor == FornecedorType.Nacional && order.IsValid && order.ValorTotal > 200)
